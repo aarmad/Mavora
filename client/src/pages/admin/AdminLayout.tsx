@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { Users, Settings, MessageSquare, Key, BarChart3, LogOut } from 'lucide-react';
+import { Users, Settings, MessageSquare, Key, LogOut } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 
 const NAV = [

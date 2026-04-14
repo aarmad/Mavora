@@ -72,7 +72,6 @@ export default function Navbar() {
           display: 'flex',
           alignItems: 'center',
           gap: 4,
-          '@media (max-width: 768px)': { display: 'none' },
         }} className="desktop-nav">
           {navLinks.map((l) => (
             <Link

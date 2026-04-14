@@ -1,4 +1,5 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Eye, EyeOff, ArrowRight } from 'lucide-react';
@@ -26,7 +27,7 @@ export default function Login() {
     setLoading(true);
     try {
       await login(email, password);
-      navigate(user?.isAdmin ? '/admin' : '/dashboard', { replace: true });
+      navigate('/dashboard', { replace: true });
     } catch (err: any) {
       setError(err.response?.data?.message ?? 'Erreur de connexion');
     } finally {

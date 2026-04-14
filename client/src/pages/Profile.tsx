@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { User, Mail, Phone, CreditCard, Calendar, MessageCircle } from 'lucide-react';
 import Navbar from '../components/Navbar';
@@ -6,14 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 
 export default function Profile() {
   const { user } = useAuth();
-  const [toast, setToast] = useState('');
-
   if (!user) return null;
-
-  const showToast = (msg: string) => {
-    setToast(msg);
-    setTimeout(() => setToast(''), 3000);
-  };
 
   const contactWhatsApp = () => {
     const msg = `Bonjour Mavora, je suis ${user.firstName} ${user.lastName} (${user.memberId}). Je souhaite modifier mon profil.`;
@@ -138,12 +130,6 @@ export default function Profile() {
           </motion.div>
         </div>
       </div>
-
-      {toast && (
-        <div className="toast-container">
-          <div className="toast success">{toast}</div>
-        </div>
-      )}
 
       <style>{`
         @media (max-width: 700px) {
