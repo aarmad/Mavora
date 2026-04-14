@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { User, Mail, Phone, CreditCard, Calendar, MessageCircle } from 'lucide-react';
+import { User, Mail, Phone, CreditCard, Calendar, MessageCircle, Sparkle } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -75,7 +75,7 @@ export default function Profile() {
               color: tierColor,
               marginBottom: 24,
             }}>
-              ✦ {user.subscription.toUpperCase()} MEMBER
+              <Sparkle size={11} /> {user.subscription.toUpperCase()} MEMBER
             </div>
 
             <div style={{ fontFamily: 'monospace', fontSize: 14, color: 'var(--muted)', letterSpacing: '0.1em', marginBottom: 24 }}>

@@ -10,7 +10,7 @@ interface Service extends ServicePayload {
 
 const EMPTY: ServicePayload = {
   name: '', description: '', shortDescription: '', category: '',
-  icon: '✦', minTier: 'basic', whatsappMessage: '', isActive: true,
+  icon: '', minTier: 'basic', whatsappMessage: '', isActive: true,
 };
 
 export default function AdminServices() {

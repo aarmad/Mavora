@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Shield, Zap, Phone, Mail, MapPin, Sparkle } from 'lucide-react';
+import { ArrowUpRight, Shield, Zap, Phone, Mail, MapPin, Sparkle, Building2, Car, Wine, Plane, Utensils } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import { servicesAPI } from '../services/api';
 
@@ -13,6 +13,15 @@ interface PublicService {
   icon: string;
   minTier: string;
 }
+
+const SERVICE_ICONS: Record<string, React.ReactElement> = {
+  hotel:     <Building2 size={20} />,
+  car:       <Car size={20} />,
+  events:    <Wine size={20} />,
+  jet:       <Plane size={20} />,
+  security:  <Shield size={20} />,
+  food:      <Utensils size={20} />,
+};
 
 const STATS = [
   { value: '+200', label: 'Membres élite' },
@@ -326,7 +335,9 @@ export default function Landing() {
                 fontSize: 20,
                 marginBottom: 16,
               }}>
-                {s.icon}
+                <span style={{ color: 'var(--gold)', display: 'flex' }}>
+                  {SERVICE_ICONS[s.icon] ?? s.icon}
+                </span>
               </div>
               <div style={{ fontSize: 12, color: 'var(--muted)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 8 }}>
                 {s.category}
@@ -500,10 +511,10 @@ export default function Landing() {
 }
 
 const defaultServices = [
-  { _id: '1', name: 'Hôtels & Villas',    shortDescription: 'Réservation dans les plus beaux établissements du Togo et d\'Afrique.', category: 'Hébergement', icon: '🏨', minTier: 'basic' },
-  { _id: '2', name: 'Chauffeur Privé',    shortDescription: 'Transferts aéroport, déplacements VIP, véhicules de prestige.', category: 'Transport', icon: '🚗', minTier: 'basic' },
-  { _id: '3', name: 'Événements Privés',  shortDescription: 'Organisation de soirées, réceptions et célébrations sur mesure.', category: 'Événements', icon: '🥂', minTier: 'premium' },
-  { _id: '4', name: 'Jet & Aviation',     shortDescription: 'Location de jets privés et hélicoptères pour vos déplacements.', category: 'Transport', icon: '✈️', minTier: 'vip' },
-  { _id: '5', name: 'Sécurité & Escorte', shortDescription: 'Services de protection rapprochée et convois sécurisés.', category: 'Sécurité', icon: '🛡️', minTier: 'vip' },
-  { _id: '6', name: 'Restauration',       shortDescription: 'Réservation en exclusivité dans les meilleurs restaurants.', category: 'Gastronomie', icon: '🍽️', minTier: 'basic' },
+  { _id: '1', name: 'Hôtels & Villas',    shortDescription: 'Réservation dans les plus beaux établissements du Togo et d\'Afrique.', category: 'Hébergement', icon: 'hotel',    minTier: 'basic' },
+  { _id: '2', name: 'Chauffeur Privé',    shortDescription: 'Transferts aéroport, déplacements VIP, véhicules de prestige.', category: 'Transport', icon: 'car',       minTier: 'basic' },
+  { _id: '3', name: 'Événements Privés',  shortDescription: 'Organisation de soirées, réceptions et célébrations sur mesure.', category: 'Événements', icon: 'events',    minTier: 'premium' },
+  { _id: '4', name: 'Jet & Aviation',     shortDescription: 'Location de jets privés et hélicoptères pour vos déplacements.', category: 'Transport', icon: 'jet',       minTier: 'vip' },
+  { _id: '5', name: 'Sécurité & Escorte', shortDescription: 'Services de protection rapprochée et convois sécurisés.', category: 'Sécurité', icon: 'security',  minTier: 'vip' },
+  { _id: '6', name: 'Restauration',       shortDescription: 'Réservation en exclusivité dans les meilleurs restaurants.', category: 'Gastronomie', icon: 'food',      minTier: 'basic' },
 ];
