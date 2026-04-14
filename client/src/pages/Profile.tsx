@@ -82,8 +82,11 @@ export default function Profile() {
               {user.memberId}
             </div>
 
-            <span className={`badge ${user.status === 'active' ? 'badge-green' : 'badge-orange'}`}>
-              {user.status === 'active' ? '● Actif' : '◌ En attente'}
+            <span className={`badge ${user.status === 'active' ? 'badge-green' : 'badge-orange'}`} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+              {user.status === 'active'
+                ? <><svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg> Actif</>
+                : <><svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="none" stroke="currentColor" strokeWidth="1.5"/></svg> En attente</>
+              }
             </span>
           </motion.div>
 

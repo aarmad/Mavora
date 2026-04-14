@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, CreditCard, Clock, CheckCircle, AlertCircle, Plus, MessageCircle } from 'lucide-react';
+import { ArrowUpRight, CreditCard, Clock, CheckCircle, AlertCircle, Plus, MessageCircle, Sparkle, ClipboardList, Star, User } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import { useAuth } from '../contexts/AuthContext';
 import { requestsAPI, servicesAPI } from '../services/api';
@@ -54,7 +54,7 @@ export default function Dashboard() {
       setRequests((p) => [res.data, ...p]);
       setForm({ subject: '', message: '' });
       setShowForm(false);
-      showToast('Demande envoyée avec succès ✦');
+      showToast('Demande envoyée avec succès');
     } catch {
       showToast('Erreur lors de l\'envoi');
     } finally {
@@ -141,10 +141,10 @@ export default function Dashboard() {
         {!isPending && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 16, marginBottom: 40 }}>
             {[
-              { label: 'Services accessibles', value: serviceCount, icon: '✦' },
-              { label: 'Demandes totales',      value: requests.length, icon: '📋' },
-              { label: 'En cours',              value: requests.filter((r) => r.status === 'inprogress').length, icon: '⏳' },
-              { label: 'Complétées',            value: requests.filter((r) => r.status === 'completed').length, icon: '✅' },
+              { label: 'Services accessibles', value: serviceCount,                                                  icon: <Sparkle size={22} style={{ color: 'var(--gold)' }} /> },
+              { label: 'Demandes totales',      value: requests.length,                                            icon: <ClipboardList size={22} style={{ color: 'var(--white-dim)' }} /> },
+              { label: 'En cours',              value: requests.filter((r) => r.status === 'inprogress').length, icon: <Clock size={22} style={{ color: 'var(--gold)' }} /> },
+              { label: 'Complétées',            value: requests.filter((r) => r.status === 'completed').length,  icon: <CheckCircle size={22} style={{ color: '#4ade80' }} /> },
             ].map((s, i) => (
               <motion.div
                 key={s.label}
@@ -153,7 +153,7 @@ export default function Dashboard() {
                 transition={{ delay: i * 0.07 }}
                 className="card"
               >
-                <div style={{ fontSize: 24, marginBottom: 8 }}>{s.icon}</div>
+                <div style={{ marginBottom: 8, display: 'flex' }}>{s.icon}</div>
                 <div style={{ fontFamily: 'var(--font-serif)', fontSize: 32, color: 'var(--white)', fontWeight: 600 }}>
                   {s.value}
                 </div>
@@ -167,9 +167,9 @@ export default function Dashboard() {
         {!isPending && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16, marginBottom: 40 }}>
             {[
-              { to: '/services',  label: 'Nos Services',  desc: 'Explorez nos offres exclusives', icon: '🌟' },
-              { to: '/carte-vip', label: 'Carte VIP',     desc: 'Votre identité membre digitale', icon: '💳' },
-              { to: '/profil',    label: 'Mon Profil',    desc: 'Gérez vos informations',         icon: '👤' },
+              { to: '/services',  label: 'Nos Services',  desc: 'Explorez nos offres exclusives', icon: <Star size={22} style={{ color: 'var(--gold)' }} /> },
+              { to: '/carte-vip', label: 'Carte VIP',     desc: 'Votre identité membre digitale', icon: <CreditCard size={22} style={{ color: 'var(--gold)' }} /> },
+              { to: '/profil',    label: 'Mon Profil',    desc: 'Gérez vos informations',         icon: <User size={22} style={{ color: 'var(--gold)' }} /> },
             ].map((item) => (
               <Link
                 key={item.to}

@@ -40,11 +40,11 @@ export default function AdminServices() {
       if (editing) {
         const res = await servicesAPI.update(editing._id, form);
         setServices((p) => p.map((s) => s._id === editing._id ? res.data : s));
-        showToast('Service mis à jour ✦');
+        showToast('Service mis à jour');
       } else {
         const res = await servicesAPI.create(form);
         setServices((p) => [res.data, ...p]);
-        showToast('Service créé ✦');
+        showToast('Service créé');
       }
       setShowForm(false);
     } catch {

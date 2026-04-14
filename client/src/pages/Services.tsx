@@ -49,7 +49,7 @@ export default function Services() {
         message: `Je souhaite bénéficier du service "${s.name}".`,
         service: s._id,
       });
-      showToast(`Demande envoyée pour "${s.name}" ✦`);
+      showToast(`Demande envoyée pour "${s.name}"`);
       setSelected(null);
     } catch {
       showToast('Erreur lors de l\'envoi');

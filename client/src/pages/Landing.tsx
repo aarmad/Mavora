@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Shield, Zap, Phone, Mail, MapPin } from 'lucide-react';
+import { ArrowUpRight, Shield, Zap, Phone, Mail, MapPin, Sparkle } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import { servicesAPI } from '../services/api';
 
@@ -93,8 +93,8 @@ export default function Landing() {
               pointerEvents: 'none',
             }} />
 
-            <div className="badge badge-gold" style={{ marginBottom: 24, fontSize: 11 }}>
-              ✦ Conciergerie Privée — Togo
+            <div className="badge badge-gold" style={{ marginBottom: 24, fontSize: 11, display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Sparkle size={11} /> Conciergerie Privée — Togo
             </div>
 
             <h1 style={{ fontSize: 'clamp(36px, 5vw, 60px)', color: 'var(--white)', marginBottom: 20, lineHeight: 1.05 }}>
@@ -227,7 +227,7 @@ export default function Landing() {
                 padding: '10px 0',
                 borderBottom: i < 2 ? '1px solid var(--border)' : 'none',
               }}>
-                <span style={{ color: 'var(--gold)', fontSize: 16 }}>✦</span>
+                <span style={{ color: 'var(--gold)', display: 'flex' }}><Sparkle size={16} /></span>
                 <span style={{ fontSize: 14, color: 'var(--white-dim)' }}>{s}</span>
               </div>
             ))}
@@ -398,8 +398,8 @@ export default function Landing() {
               }}
             >
               {tier.badge && (
-                <div className="badge badge-gold" style={{ marginBottom: 20 }}>
-                  ✦ {tier.badge}
+                <div className="badge badge-gold" style={{ marginBottom: 20, display: 'flex', alignItems: 'center', gap: 5 }}>
+                  <Sparkle size={11} /> {tier.badge}
                 </div>
               )}
               <div style={{ color: tier.color, fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8 }}>
@@ -412,7 +412,7 @@ export default function Landing() {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {tier.features.map((f) => (
                   <li key={f} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 14, color: 'var(--white-dim)' }}>
-                    <span style={{ color: tier.color, flexShrink: 0 }}>✦</span>
+                    <span style={{ color: tier.color, flexShrink: 0, display: 'flex' }}><Sparkle size={12} /></span>
                     {f}
                   </li>
                 ))}
@@ -476,7 +476,7 @@ export default function Landing() {
             © 2024 Mavora. Tous droits réservés.
           </span>
           <span style={{ fontSize: 13, color: 'var(--muted)' }}>
-            Conçu avec excellence ✦
+            Conçu avec excellence <Sparkle size={12} style={{ display: 'inline-block', verticalAlign: 'middle' }} />
           </span>
         </div>
       </footer>

@@ -38,7 +38,7 @@ export default function AdminCodes() {
     try {
       const res = await adminAPI.createInviteCode(tier);
       setCodes((p) => [res.data, ...p]);
-      showToast(`Code ${res.data.code} créé ✦`);
+      showToast(`Code ${res.data.code} créé`);
     } catch {
       showToast('Erreur lors de la création');
     } finally {

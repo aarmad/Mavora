@@ -53,7 +53,7 @@ export default function AdminUsers() {
       const res = await adminAPI.updateUser(id, data);
       setUsers((prev) => prev.map((u) => u._id === id ? { ...u, ...res.data } : u));
       if (selected?._id === id) setSelected((s) => s ? { ...s, ...res.data } : null);
-      showToast('Mis à jour ✦');
+      showToast('Mis à jour');
     } catch {
       showToast('Erreur de mise à jour');
     }

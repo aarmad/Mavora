@@ -45,7 +45,7 @@ export default function AdminRequests() {
       const res = await requestsAPI.update(id, { status, adminNote });
       setRequests((p) => p.map((r) => r._id === id ? { ...r, ...res.data } : r));
       if (selected?._id === id) setSelected((s) => s ? { ...s, ...res.data } : null);
-      showToast('Statut mis à jour ✦');
+      showToast('Statut mis à jour');
     } catch {
       showToast('Erreur');
     }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Key, Users, FileText } from 'lucide-react';
+import { ArrowRight, Key, Users, FileText, Info } from 'lucide-react';
 import { authAPI } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import type { RegisterPayload } from '../services/api';
@@ -284,8 +284,11 @@ export default function Register() {
                     padding: '12px 16px',
                     fontSize: 13,
                     color: 'var(--muted)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
                   }}>
-                    ℹ️ Votre demande sera examinée par notre équipe sous 48h.
+                    <Info size={14} style={{ flexShrink: 0 }} /> Votre demande sera examinée par notre équipe sous 48h.
                   </div>
                 )}
 
